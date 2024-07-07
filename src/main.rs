@@ -2,11 +2,14 @@ use http_client::get_request;
 use reqwest::Error;
 
 mod http_client;
+mod fake_credential_spammer;
 
 #[tokio::main]
 async fn main() -> Result<(), Error> {
-    let url = "https://www.fruityvice.com/api/fruit/apple";
-    get_request(url).await?;
+    for i in 0..50 {
+        println!("{}", fake_credential_spammer::random_mail());
+    }
+
     Ok(())
 }
 
